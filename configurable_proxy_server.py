@@ -9,11 +9,11 @@ API_CONFIGS = {
     "10Aarambh": {
         "url": "https://theeduverse.xyz/api/eduverse/api/10",
         "referrer": "https://theeduverse.xyz/courses/10th/details",
-        "description": "Example API for 10th grade content details."
+        "description": "API for 10th grade content details."
     },
-    "UserListV1": {
-        "url": "https://api.example.com/v1/users/active",
-        "referrer": "https://dashboard.internal.com/data",
+    "11PrarambhPCMB": {
+        "url": "https://theeduverse.xyz/api/eduverse/api/11/science",
+        "referrer": "https://theeduverse.xyz/courses/11th/details-science",
         "description": "Internal API call for active user list."
     },
     # Add as many more configurations as you need
