@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smarterz</title>
+    <style>
+        /* Reset styles for full-screen display */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Allow scrolling for large responses */
+            background-color: #1e1e1e; /* Dark background like a code editor */
+            color: #d4d4d4; /* Light text color */
+            font-family: monospace;
+            font-size: 14px;
+        }
+
+        /* The pre tag takes up the entire space */
+        #responseOutput {
+            margin: 0;
+            padding: 20px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            min-height: 100%;
+            box-sizing: border-box; /* Include padding in height */
+        }
+
+        /* Error state styling */
+        .error-output {
+            color: #ff6b6b; /* Bright red for errors */
+            background-color: #331f1f;
+        }
+    </style>
+</head>
+<body>
+    <!-- This single element will display the full raw response or error -->
+    <pre id="responseOutput">Loading...</pre>
+
+    <script>
+        const PROXY_API_BASE_URL = '/api'; 
+
+        const responseOutput = document.getElementById('responseOutput');
+        
+        let currentConfigId = '';
+
+        // Function to make the request to the local Python proxy
+        async function sendProxiedRequest() {
+            if (!currentConfigId) {
+                displayError("URL Error", "Missing 'get' parameter. Please use the format: ?get=<ID>");
+                return;
+            }
+
+            responseOutput.textContent = `Fetching data for ID: ${currentConfigId}...`;
+            responseOutput.classList.remove('error-output');
+
+            const proxyUrl = `${PROXY_API_BASE_URL}?get=${encodeURIComponent(currentConfigId)}`;
+
+            try {
+                const response = await fetch(proxyUrl);
+                const result = await response.json();
+
+                // Check for server-side errors
+                if (!response.ok || result.error) {
+                    displayError(
+                        result.error || `Proxy Server Error (HTTP Status ${response.status})`, 
+                        result.details || result.message
+                    );
+                    return;
+                }
+
+                // Display ONLY the raw data from the proxy's successful response
+                responseOutput.textContent = formatResponse(result);
+                
+            } catch (error) {
+                // Handle network errors (e.g., proxy server is down or JSON parsing failed)
+                displayError("Network/Connection Error", error.message);
+            }
+        }
+
+        function formatResponse(result) {
+            if (typeof result.data === 'object' && result.data !== null) {
+                // Pretty print JSON data
+                return JSON.stringify(result.data, null, 2);
+            } else {
+                // Output raw text data
+                return String(result.data);
+            }
+        }
+
+        function displayError(message, details = null) {
+            responseOutput.classList.add('error-output');
+
+            let output = `[PROXY FAILURE: ${message}]\n\n`;
+            output += `ID Used: ${currentConfigId || 'N/A'}\n`;
+            if (details) {
+                output += `Details: ${details}\n`;
+            }
+            output += `\n------------------------------\n`;
+            output += `Please ensure the Python server is running and the ID is configured correctly.`;
+            
+            responseOutput.textContent = output;
+        }
+
+        // Initialization function
+        function init() {
+            // Read 'get' parameter from the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const idFromUrl = urlParams.get('get');
+            
+            if (idFromUrl) {
+                currentConfigId = idFromUrl;
+                sendProxiedRequest(); // Automatically trigger request
+            } else {
+                displayError("URL Parameter Missing", "The 'get' parameter is not present in the URL.");
+            }
+        }
+        
+        // Start the application logic when the page loads
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
