@@ -16,11 +16,27 @@ API_CONFIGS = {
         "referrer": "https://theeduverse.xyz/courses/11th/details-science",
         "description": "Internal API call for active user list."
     },
-    "10Abhay": {
+    "10AbhayBatch": {
         "url": "https://e-leak.vercel.app/api/batches/39904",
         "referrer": "https://e-leak.vercel.app/courses/details/39904",
         "description": "10 Abhay batch"
+    },
+    "10Abhay": {
+        "url": "https://e-leak.vercel.app/api/39904",
+        "referrer": "https://e-leak.vercel.app",
+        "description": "Description of this proxied API."
+    },
+    "11NirbhayBatch": {
+        "url": "https://e-leak.vercel.app/api/batches/40688",
+        "referrer": "https://e-leak.vercel.app",
+        "description": "Description of this proxied API."
+    },
+    "11Nirbhay": {
+        "url": "https://e-leak.vercel.app/api/40688",
+        "referrer": "https://e-leak.vercel.app",
+        "description": "Description of this proxied API."
     }
+    
     # Add as many more configurations as you need
     # "YourCustomID": {
     #     "url": "https://your.target.api/endpoint",
