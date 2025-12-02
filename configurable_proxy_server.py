@@ -17,8 +17,8 @@ API_CONFIGS = {
         "description": "Internal API call for active user list."
     },
     "10Abhay": {
-        "url": "https://e-leak.vercel.app/api/batches/39904"
-        "referrer": "https://e-leak.vercel.app/courses/details/39904"
+        "url": "https://e-leak.vercel.app/api/batches/39904",
+        "referrer": "https://e-leak.vercel.app/courses/details/39904",
         "description": "10 Abhay batch"
     }
     # Add as many more configurations as you need
