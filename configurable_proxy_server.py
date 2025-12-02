@@ -20,6 +20,7 @@ API_CONFIGS = {
         "url": "https://e-leak.vercel.app/api/batches/39904"
         "referrer": "https://e-leak.vercel.app/courses/details/39904"
         "description": "10 Abhay batch"
+    }
     # Add as many more configurations as you need
     # "YourCustomID": {
     #     "url": "https://your.target.api/endpoint",
