@@ -17,23 +17,23 @@ API_CONFIGS = {
         "description": "Internal API call for active user list."
     },
     "10AbhayBatch": {
-        "url": "https://e-leak.vercel.app/api/batches/39904",
-        "referrer": "https://e-leak.vercel.app/courses/details/39904",
+        "url": "https://theeduverse.xyz/api/batches/39904",
+        "referrer": "https://theeduverse.xyz/courses/details/39904",
         "description": "10 Abhay batch"
     },
     "10Abhay": {
-        "url": "https://e-leak.vercel.app/api/39904",
-        "referrer": "https://e-leak.vercel.app",
+        "url": "https://theeduverse.xyz/api/39904",
+        "referrer": "https://theeduverse.xyz",
         "description": "Description of this proxied API."
     },
     "11NirbhayBatch": {
-        "url": "https://e-leak.vercel.app/api/batches/40688",
-        "referrer": "https://e-leak.vercel.app",
+        "url": "https://theeduverse.xyz/api/batches/40688",
+        "referrer": "https://theeduverse.xyz",
         "description": "Description of this proxied API."
     },
     "11Nirbhay": {
-        "url": "https://e-leak.vercel.app/api/40688",
-        "referrer": "https://e-leak.vercel.app",
+        "url": "https://theeduverse.xyz/api/40688",
+        "referrer": "https://theeduverse.xyz",
         "description": "Description of this proxied API."
     }
     
